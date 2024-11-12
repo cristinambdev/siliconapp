@@ -21,6 +21,7 @@
 --color-input: #B4B7C9;
 --color-btn-hover:#9397AD;
 --color-round-btn: #FFFFFF;
+--color-btn-accordion: #F3F6FF;
 
 
 --color-white:#FFFFFF;
@@ -51,6 +52,8 @@
 --color-input: #FFFFFF;
 --color-btn-hover:#9397AD;
 --color-round-btn: #ffffff43;
+--color-btn-accordion:rgba(179, 179, 179, 0.12);
+
 
 
 --color-white:#FFFFFF;
@@ -236,10 +239,8 @@ contact-box,
 }
 
 
-
-
-
 /* HEADER*/
+
 header {
   padding-block: 1rem;
   position: relative;
@@ -349,6 +350,12 @@ header {
     transform: translateX(22px);
   }
   }
+
+.header.fixed {
+  position: sticky;
+  background-color: var(--color-background-hero);
+  transition: .3s ease-in-out;
+}
 
   @media (max-width: 990px) {
 
@@ -1065,7 +1072,7 @@ header {
       cursor: pointer;
 
       .btn-round {
-        background-color: var(--color-bg2); 
+        background-color: var(--color-btn-accordion); 
         border: none;
         width: 2.4rem;
         aspect-ratio: 1;
@@ -1361,13 +1368,12 @@ header {
     h2 {
       font-size: 1.6rem;
       margin-left: 2rem;
+      padding-right: 2rem;
 
       span {
         display: block;
       }
     }
-
-
     }
   }
 
@@ -1405,6 +1411,8 @@ footer .credit {
 
 .page-title .container {
 
+  padding-top: 1rem;
+
   .breadcrumbs {
     
     color: #9397AD;
@@ -1441,7 +1449,8 @@ footer .credit {
 /* CONTACT PAGE*/
 .contact-page {
   background: var(--color-bg2);
-  padding-top: 2rem;
+  padding-top: 3rem;
+  position: relative;
 
   .container {
     margin-bottom: 3rem;
@@ -1468,12 +1477,12 @@ footer .credit {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
     gap: 2rem; 
 
 
     .contact-item {
-      width: 100%;
+      width: 50%;
+      height: 100%;
       padding: 1rem;
       border-radius: .5rem;
       background-color: var(--color-bg);
@@ -1620,11 +1629,12 @@ footer .credit {
 
     .contact-links {
       display: inline;
-      width: 60%;
       margin-top: 0;
+      height: 50%;
       
         .contact-item {
           background-color: transparent;
+
         }
       
     }
@@ -1636,7 +1646,6 @@ footer .credit {
 
 .location .container {
 
-      position: relative;
       padding-block: 2rem;
     
       
@@ -1662,10 +1671,7 @@ footer .credit {
 
           p {
             color: var(--color-text);
-
           }
-
-        
         }
 
         .address,
@@ -1674,7 +1680,6 @@ footer .credit {
           align-items: center;
           gap: .7rem;
           padding-bottom: .7rem;
-
         }
 
         .opening-times {
@@ -1692,7 +1697,6 @@ footer .credit {
 
           p {
             margin: 0;
-
           }
 
         }

@@ -69,7 +69,7 @@ const ContactForm = () => {
                     <input
                         type="email"
                         name="email"
-                        className={`form-input ${errors.name ? 'input-error' : ''} `}
+                        className={`form-input ${errors.email ? 'input-error' : ''} `}
                         value={formData.email}
                         onChange={handleInputChange}
                         required

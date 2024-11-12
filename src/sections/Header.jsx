@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../index.css'
+import { Link, useLocation } from 'react-router-dom'
+
 
 import LogoType from '../assets/images/mainlogo.svg'
 import LogoTypeDarkMode from '../assets/images/mainlogo_darkmode.svg'
 
-import { Link, useLocation } from 'react-router-dom'
 
 import MobileButton from './MobileButton'
 import DarkModeSwitch from './DarkModeSwitch'
@@ -13,11 +14,21 @@ const Header = () => {
 
   const {pathname} = useLocation()
 
+  const [fix, setFix] = useState(false)
 
-    
+  function setFixed () {
+    if (window.scrollY >= 100 ) {
+      setFix(true)
+    } else {
+      setFix()
+    }
+  }
+
+
+    window.addEventListener('scroll', setFixed)
 
   return (
-    <header style={{ backgroundColor:`${pathname === '/' ? "var(--color-bg)" : "var(--color-bg2)" }`}}>
+    <header className={fix ? 'header fixed' : 'header'} style={{ backgroundColor:`${pathname === '/' ? "var(--color-bg)" : "var(--color-bg2)" }`}}>
       
       <div className="container">
 
