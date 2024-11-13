@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../index.css'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -14,21 +14,9 @@ const Header = () => {
 
   const {pathname} = useLocation()
 
-  const [fix, setFix] = useState(false)
-
-  function setFixed () {
-    if (window.scrollY >= 100 ) {
-      setFix(true)
-    } else {
-      setFix()
-    }
-  }
-
-
-    window.addEventListener('scroll', setFixed)
 
   return (
-    <header className={fix ? 'header fixed' : 'header'} style={{ backgroundColor:`${pathname === '/' ? "var(--color-bg)" : "var(--color-bg2)" }`}}>
+    <header  style={{ backgroundColor:`${pathname === '/' ? "var(--color-bg)" : "var(--color-bg2)" }`}}>
       
       <div className="container">
 
