@@ -6,62 +6,52 @@ import EmailIcon from '../assets/images/vector_email_subscription.svg'
 
 
 const Subscription = () => {
+  const { formData, setFormData, errors, validateForm, handleInputChange } = useContext(FormContext);
+  const [submitted, setSubmitted] = useState(false);
 
-  const [ submitted, setSubmitted ] = useState(false)
-
-  const [formData, setFormData] = useState({ email: ''})
-  const [errors, setErrors] = useState({})
-
-  const handleOk = () => {
-      setSubmitted(false)
-  }
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value })
-}
+  const handleOk = () => setSubmitted(false);
 
 
-const validateForm = () => {
-    const newErrors = {}
-
-    if (!/^[A-Öa-ö\s\-]{2,}$/.test(formData.fullName)) {
-        newErrors.fullName = "Must be at least 2 characters long, no numbers"
-    }
-    if (!/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9]{2,}$/.test(formData.email)) {
-        newErrors.email = "Please, enter a valid email"
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0
-}
-
+  //WITH SUGGESTIONS FROM CHAT GPT tO MAKE BOTH THE SUBSCRIPTION AND FORM TO WORK)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
-
+    if (validateForm(['email'])) { 
+      try {
+        const payload = { email: formData.email };
+  
         const res = await fetch('https://win24-assignment.azurewebsites.net/api/forms/subscribe', {
-          method: 'post',
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(payload),
         });
-
-        if (res.ok) { 
+  
+        if (res.ok) {
+          console.log("Form submitted successfully.");
           setSubmitted(true);
-          setFormData({ email: '' })
-        } 
+          setFormData((prev) => ({ ...prev, email: '' })); // Clear email field
+        } else {
+          console.error("Server error:", await res.text());
+        }
+      } catch (err) {
+        console.error("Network or fetch error:", err.message);
+      }
+    } else {
+      console.error("Validation failed. Errors:", errors); // Log only email-related errors
     }
   };
+  
 
-  if(submitted) {
+  if (submitted) {
     return (
-      <div className = "confirmation-message">
+      <div className="confirmation-message">
         <h2>Thank you for subscribing to our newsletter</h2>
-        <button className='btn-primary' onClick={handleOk}>Ok</button>
+        <button className="btn-primary" onClick={handleOk}>Ok</button>
       </div>
-    )
+    );
   }
+
 
 
   
@@ -75,15 +65,20 @@ const validateForm = () => {
             <img className="subscription-icon" src={EmailIcon} alt="Email Icon" />
              
               <div className='input-group'>
-              <input
-                type="email"
-                name="email"
-                className={`email-input ${errors.email ? 'input-error' : ''}`}
-                placeholder="Your email"
-                onChange={handleInputChange}
-                value={formData.email}
-              />
-              <button type="submit" className="btn-primary">Subscribe</button>
+                <input
+                  type="email"
+                  name="email"
+                  className={`email-input ${errors.email ? 'input-error' : ''}`}
+                  placeholder="Your email"
+                  onChange={handleInputChange}
+                  value={formData.email || ''}
+                />
+                <button 
+                  type="submit" 
+                  className="btn-primary"
+                  >
+                  Subscribe
+                </button>
               </div>
 
               <div className="invalid-input">              
