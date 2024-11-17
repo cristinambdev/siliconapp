@@ -974,7 +974,7 @@ header {
       padding: 1.5rem;
       position: relative;
       z-index: 0;
-      background-color: var(--color-bg-box);
+      background-color: var(--color-bg);
       color: var(--color-text);
       box-shadow: 0 5px 10px rgba(77, 74, 74, 0.1882352941);
       width: 35%;
