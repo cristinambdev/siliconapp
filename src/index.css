@@ -657,7 +657,6 @@ header {
   }
 
   .features {
-    margin-top: 1rem;
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
@@ -678,7 +677,9 @@ header {
       font-weight: 400;
       line-height: 1.6rem;
     }
-  }
+  
+
+}
 
   .phone-yourcards {
     display: none;

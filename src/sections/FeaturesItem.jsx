@@ -10,7 +10,7 @@ const FeaturesItem = () => {
   return (
     <>
 
-      <div className="features feature-1">
+      <div className="features">
 
       <div className="features-icon">
           <img src={PaymentsVektor} alt="credit card icon"/>
@@ -18,15 +18,16 @@ const FeaturesItem = () => {
 
       <div className="features-text">
           <h5>Easy Payments</h5>
-          <p>Id mollis consectetur congue egestas egestas suspendisse blandit justo.</p>
+          <p>Id mollis consectetur congue aegestas egestas suspendisse blandit justo.</p>
       </div>
       </div>
 
-      <div className="features feature-2">
+      <div className="features">
 
       <div className="features-icon">
           <img src={SecurityVektor}  alt="shield icon"/>
       </div>
+
       <div className="features-text">
           <h5>Data Security</h5>
           <p>Augue pulvinar justo, fermentum
@@ -35,7 +36,7 @@ const FeaturesItem = () => {
       </div>
       </div>
 
-      <div className="features feature-3">
+      <div className="features">
       <div className="features-icon">
           <img src={StatistiksVektor}  alt="statistics icon"/>
       </div>
@@ -46,7 +47,7 @@ const FeaturesItem = () => {
       </div>
       </div>
 
-      <div className="features feature-4">
+      <div className="features">
       <div className="features-icon">
           <img src={SupportVektor}  alt="chatting bubbles icon"/>
       </div>
@@ -57,7 +58,7 @@ const FeaturesItem = () => {
       </div>
       </div>
 
-      <div className="features feature-5">
+      <div className="features">
       <div className="features-icon">
           <img src={CashbackVektor}  alt="wallet icon"/>
       </div>
@@ -69,7 +70,7 @@ const FeaturesItem = () => {
       </div>
       </div>
 
-      <div className="features feature-6">
+      <div className="features">
       <div className="features-icon">
           <img src={StandardsVektor} alt="smiley face icon"/>
       </div>
